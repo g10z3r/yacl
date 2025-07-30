@@ -1,0 +1,8 @@
+Whitespace    ::= ( " " | "\t" | "\r" | "\n" )+
+Comment       ::= "//" { any_char_except_newline }
+                | "/*" { any_char } "*/"
+
+Identifier   ::= [A-Za-z_][A-Za-z0-9_]*
+StringLiteral ::= '"' ( '\\"' | ~'"' )* '"'
+Number       ::= [0-9]+ ('.' [0-9]+)?
+Boolean      ::= 'true' | 'false'
