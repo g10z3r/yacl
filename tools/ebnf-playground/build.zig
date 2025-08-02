@@ -36,6 +36,7 @@ pub fn build(b: *std.Build) void {
     exe.root_module.addImport("ebnf_playground_lib", lib_mod);
 
     exe.linkSystemLibrary("gtk+-3.0");
+    exe.linkSystemLibrary("gtksourceview-3.0");
     exe.linkLibC();
 
     b.installArtifact(exe);
