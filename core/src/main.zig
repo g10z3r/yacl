@@ -1,10 +1,25 @@
 //! By convention, main.zig is where your main function lives in the case that
 //! you are building an executable. If you are making a library, the convention
 //! is to delete this file and start with root.zig instead.
+//!
+
+const test_t = .{
+    .TEST_1 = 1,
+    .TEST_2 = 2,
+    .TEST_3 = 3,
+    .TEST_4 = 4,
+    .TEST_5 = 5,
+    .TEST_6 = 6,
+    .TEST_7 = 7,
+};
 
 pub fn main() !void {
     // Prints to stderr (it's a shortcut based on `std.io.getStdErr()`)
     std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
+
+    const r = try std.fs.cwd().createFile("test.txt", .{});
+    defer r.close();
+    try r.writeAll(test_t.TEST_1);
 
     // stdout is for the actual output of your application, for example if you
     // are implementing gzip, then only the compressed bytes should be sent to
